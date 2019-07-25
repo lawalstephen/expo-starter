@@ -41,6 +41,12 @@ class LoginScreen extends Component {
     password: ""
   };
 
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+  }
+
+
+
   handleSubmit = () => {
     const { email, password, FakeLogin: LoginFakeLogin } = this.props;
     LoginFakeLogin(email, password).catch(e => console.log(`Error: ${e}`));
@@ -50,10 +56,9 @@ class LoginScreen extends Component {
     const {
       isLoading,
       errorMessage,
-      email,
       ChangeInputLogin: LoginChangeInputLogin
     } = this.props;
-
+    console.log(this.props);
     if (isLoading) return <Loading />;
 
     return (
@@ -74,7 +79,7 @@ class LoginScreen extends Component {
                 <Input
                   style={{ fontFamily: "Questrial" }}
                   autoCapitalize="none"
-                  value={email}
+                  //value={email}
                   keyboardType="email-address"
                   onChangeText={v => LoginChangeInputLogin("email", v)}
                 />
@@ -82,6 +87,7 @@ class LoginScreen extends Component {
               <Item floatingLabel style={{ marginRight: 15 }}>
                 <Label style={Styles.defaultFont}>Password</Label>
                 <Input
+                  //value={password}
                   secureTextEntry
                   onChangeText={v => LoginChangeInputLogin("password", v)}
                 />
@@ -99,6 +105,7 @@ class LoginScreen extends Component {
             </Form>
 
             {errorMessage && <Messages message={errorMessage} />}
+            <Text>{isLoading}</Text>
           </View>
         </Content>
       </Container>
@@ -110,8 +117,32 @@ const mapStateToProps = state => ({
   isLoading: state.messages.loading,
   errorMessage: state.messages.error,
   email: state.user.email,
-  password: state.user.password
+  password: state.user.password,
+  isAuthenticated: state.user.isAuthenticated
 });
+
+
+// const mapStateToProps = (state, ownProps = {
+//   isLoading: state.messages.loading,
+//   errorMessage: state.messages.error,
+//   email: state.user.email,
+//   password: state.user.password,
+//   isAuthenticated: state.user.isAuthenticated
+// }) => {
+//   console.log(state) // state
+//   console.log(ownProps) // undefined
+// }
+
+// const  mapStateToProps = (state, ownProps) => {
+//   console.log(ownProps);
+//   return {
+//       isLoading: state.messages.loading,
+//       errorMessage: state.messages.error,
+//       email: state.user.email,
+//       password: state.user.password,
+//       isAuthenticated: state.user.isAuthenticated
+//   };
+// }
 
 const mapDispatchToProps = {
   FakeLogin,

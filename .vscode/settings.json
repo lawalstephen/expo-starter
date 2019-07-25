@@ -1,6 +1,4 @@
 {
-  "editor.formatOnSave": true,
-  "javascript.format.enable": false,
   "prettier.eslintIntegration": true,
   "path-intellisense.mappings": {
     "@app": "${workspaceRoot}/src/app",
@@ -9,5 +7,6 @@
     "@components": "${workspaceRoot}/src/components",
     "@constants": "${workspaceRoot}/src/constants"
   },
-  "typescript.quickSuggestionsForPaths": false
+  "typescript.quickSuggestionsForPaths": false,
+  "javascript.format.enable": false
 }

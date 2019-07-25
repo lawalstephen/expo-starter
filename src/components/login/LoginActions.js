@@ -4,6 +4,7 @@ import ErrorMessages from "@constants/errors";
 import MessagesAction from "@common/messages/MessagesActions";
 
 export function Login(email, password) {
+  console.log("credentials", email, password)
   return dispatch =>
     new Promise(async (resolve, reject) => {
       await MessagesAction(dispatch, "loading", true);

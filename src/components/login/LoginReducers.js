@@ -1,14 +1,16 @@
 export const initialState = {
   loading: false,
   error: null,
-  email: "me@reactnativeexpostarter.com",
-  password: "123456789"
+  email:"",
+  password:""
+
 };
 
 export default function user(state = initialState, action) {
   switch (action.type) {
     case "USER_LOGIN": {
       if (action.data) {
+        console.log("i go here to login", action.data)
         return {
           ...state,
           loading: false,
@@ -21,6 +23,7 @@ export default function user(state = initialState, action) {
       return state;
     }
     case "USER_LOGOUT": {
+      console.log("i go here to logout")
       return {
         ...state,
         loading: false,
@@ -29,6 +32,7 @@ export default function user(state = initialState, action) {
       };
     }
     case "USER_CHANGE_INPUT": {
+      //console.log(action.data)
       if (action.data) {
         return {
           ...state,

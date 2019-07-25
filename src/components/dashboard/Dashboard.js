@@ -37,6 +37,10 @@ class Dashboard extends Component {
     isLoading: true
   };
 
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+  }
+
   render = () => {
     const { isAuthenticated, isLoading, Logout: DashboardLogout } = this.props;
 
@@ -74,10 +78,11 @@ class Dashboard extends Component {
   };
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
   isAuthenticated: state.user.isAuthenticated,
   isLoading: state.messages.loading
 });
+
 
 const mapDispatchToProps = {
   Logout
